@@ -40,19 +40,19 @@ public class TwigCounter : MonoBehaviour
     }
 
     void Update() {
-        if (timer > 30) {
+        if (timer > 35) {
             twigCountToSpawn = 30;
             endScreen.SetActive(true);
             endScreen.GetComponentInChildren<TMP_Text>().text = "You Lose!";
             Time.timeScale = 0;
         }
-        else if (timer < 30 && twigBrokenCount == 30) {
+        else if (timer < 35 && twigBrokenCount == 30) {
             endScreen.SetActive(true);
             endScreen.GetComponentInChildren<TMP_Text>().text = "You Win!";
             Time.timeScale = 0;
         }
         timer = Time.timeSinceLevelLoad;
-        timer_label.text = $"Timer: {Mathf.Round(30-timer).ToString()}";
+        timer_label.text = $"Timer: {Mathf.Round(35-timer).ToString()}";
     }
 
     public void AddTwig()
@@ -63,7 +63,7 @@ public class TwigCounter : MonoBehaviour
 
     private void UpdateText()
     {
-        twigText.text = $"Twigs: {twigBrokenCount}";
+        twigText.text = $"Twigs: {twigCountToSpawn - twigBrokenCount}";
     }
 
     private void SpawnTwigs()
